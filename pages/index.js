@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Page from '../components/Page'
-import { addCount } from '../store/count/action'
+import { addCount } from '../store/count/reducer'
 import { wrapper } from '../store/store'
 import { serverRenderClock, startClock } from '../store/tick/action'
 

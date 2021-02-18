@@ -13,12 +13,12 @@ const client = axios.create({
 });
 
 const bindMiddleware = (middleware) => {
+  const storeWithMiddleware = applyMiddleware(...middleware, axiosMiddleware(client))
 	if (process.env.NODE_ENV !== 'production') {
 		const { composeWithDevTools } = require('redux-devtools-extension')
-		return composeWithDevTools(applyMiddleware(
-			...middleware, axiosMiddleware(client)))
+		return composeWithDevTools(storeWithMiddleware)
 	}
-	return applyMiddleware(...middleware)
+	return storeWithMiddleware
 }
 
 const combinedReducer = combineReducers({

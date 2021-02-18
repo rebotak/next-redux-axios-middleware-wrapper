@@ -38,12 +38,12 @@ export default function reducer(state = initialState, action) {
 	}
 };
 
-export function fetchData() {
+export function fetchData(count) {
 	return {
 		types: [FETCH, FETCH_SUCCESS, FETCH_FAIL],
 		payload: {
 			request: {
-				url: '/people/1',
+				url: `/people/${count}`,
 				method: 'get'
 			}
 		}

@@ -1,12 +1,12 @@
-import { countActionTypes } from './action'
+const ADD = 'count/ADD'
 
-const countInitialState = {
-	count: 0,
+const initialState = {
+	count: 1,
 }
 
-export default function reducer(state = countInitialState, action) {
+export default function reducer(state = initialState, action) {
 	switch (action.type) {
-		case countActionTypes.ADD:
+		case ADD:
 			return {
 				...state,
 				count: state.count + action.payload,
@@ -15,3 +15,9 @@ export default function reducer(state = countInitialState, action) {
 			return state
 	}
 }
+
+export const addCount = (val) => (dispatch) => dispatch(
+	{
+		type: ADD,
+		payload: val
+	})

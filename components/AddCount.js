@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addCount } from '../store/count/action'
+import { addCount } from '../store/count/reducer'
 import { fetchData } from '../store/starwars/reducer'
 
 const AddCount = ({ count, addCount, fetchData, starData }) => {
@@ -15,15 +15,18 @@ const AddCount = ({ count, addCount, fetchData, starData }) => {
 			<h1>
 				AddCount: <span>{count}</span>
 			</h1>
-			<button onClick={() => addCount(13)}>Add To Count</button>
-			<button onClick={() => fetchData()}> FETCH STARWARS</button>
+			<button onClick={() => addCount(1)}>Add 1 To Count</button>
+			<button onClick={() => fetchData(count)}> FETCH STARWARS</button>
 			{starData &&
-				<code>
-					halo
+        <>
+        <p className="">check console log for view your request result.</p>
+        <hr/>
+        <code>
 					<pre>
 						{starData.name}
 					</pre>
-				</code>
+        </code>
+        </>
 			}
 
 		</div>
